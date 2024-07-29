@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<%@include file="DBConnection.jsp" %>
+    <html lang="en">
+
+    <head>
+        <title>Virtual Class</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+        <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+        <script type="text/javascript" src="js/jquery-1.5.2.js"></script>
+        <script type="text/javascript" src="js/cufon-yui.js"></script>
+        <script type="text/javascript" src="js/cufon-replace.js"></script>
+        <script type="text/javascript" src="js/Molengo_400.font.js"></script>
+        <script type="text/javascript" src="js/Expletus_Sans_400.font.js"></script>
+        <!--[if lt IE 9]>
+<script type="text/javascript" src="js/html5.js"></script>
+<style type="text/css">.bg, .box2{behavior:url("js/PIE.htc");}</style>
+<![endif]-->
+    </head>
+
+    <body id="page1">
+        <div class="body1">
+            <div class="main">
+                <!-- header -->
+                <header>
+                    <div class="wrapper">
+                        <nav>
+                            <ul id="menu">
+                                <li><a href="studenthome.jsp">Home</a></li>
+                                <li><a href="class_date1.jsp">Class
+                                        Room</a></li>
+                                <!-- <li><a 
+href="newchat.jsp">Chat Room</a></li> -->
+                                <!-- <li><a 
+href="login.html">Examination</a></li> 
+ <li><a href="login.html">Attendance </a></li>-->
+                                <li><a href="askdoubts.jsp">Doubts</a></li>
+                                <li><a href="viewans.jsp">View
+                                        Answers</a></li>
+                                <li><a href="stu_viewmarks.jsp">Marks</a></li>
+                                <li><a href="stu_viewnews.jsp">News</a></li>
+                                <li><a href="stu_about.jsp">About
+                                        Us</a></li>
+                                <li><a href="stu_contact.jsp">Contact Us</a></li>
+                                <li class="end"><a href="logout.jsp">Signout</a></li>
+                            </ul>
+                        </nav>
+                        <ul id="icon">
+                            <li><a href="#"><img src="images/icon1.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="images/icon2.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="images/icon3.jpg" alt=""></a></li>
+                        </ul>
+                    </div>
+                    <h4>Class Details</h4>
+                    <table border="2">
+                        <tr>
+                            <td><b>Subject</b></td>
+                            <td><b>Topic Name</b></td>
+                            <td><b>Faculty Name</b></td>
+                        </tr>
+                        <% String name=(String)session.getAttribute("user"); session.setAttribute("uname",name);
+                            ps=con.prepareStatement("select * from classlesson"); rs=ps.executeQuery(); while(rs.next())
+                            { String sub=rs.getString(4); String lesson=rs.getString(1); String faculty=rs.getString(6);
+                            %>
+                            <tr>
+                                <td>
+                                    <%=sub %>
+                                </td>
+                                <td>
+                                    <%=lesson %>
+                                </td>
+                                <td>
+                                    <%=faculty%>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </table>
+                    <br>
+                    <h4>Ask Doubts</h4>
+                    <form action="storedoubt.jsp">
+                        <table>
+                            <tr>
+                                <td>Subject Name</td>
+                                <td><input type="text" name="subject"></td>
+                            </tr>
+                            <tr>
+                                <td>Topic Name</td>
+                                <td><input type="text" name="topic"></td>
+                            </tr>
+                            <tr>
+                                <td>Faculty Name</td>
+                                <td><input type="text" name="faculty"></td>
+                            </tr>
+                            <tr>
+                                <td>Questions</td>
+                                <td><textarea rows="8" cols="25" name="doubts"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td align="right"><input type="submit" value="Submit">
+                                </td>
+                                <td align="left"><input type="reset" value="Clear">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </header>
+                <!-- / header -->
+            </div>
+        </div>
+        <div class="body2">
+            <div class="main">
+                <!-- content -->
+                <section id="content">
+                    <div class="wrapper">
+                        <div class="pad1 pad_top1">
+                            <article class="cols marg_right1">
+                                <figure>
+                                    <a href="#"><img src="images/page1_img1.jpg" alt=""></a>
+                                </figure>
+                                <span class="font1">Our Mission
+                                    Statement</span>
+                            </article>
+                            <article class="cols marg_right1">
+                                <figure>
+                                    <a href="#"><img src="images/page1_img2.jpg" alt=""></a>
+                                </figure>
+                                <span class="font1">Performance
+                                    Report</span>
+                            </article>
+                            <article class="cols">
+                                <figure>
+                                    <a href="#"><img src="images/page1_img3.jpg" alt=""></a>
+                                </figure>
+                                <span class="font1">Prospective
+                                    Parents</span>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+                <!-- content -->
+            </div>
+        </div>
+        <script type="text/javascript">Cufon.now();</script>
+    </body>
+
+    </html>
